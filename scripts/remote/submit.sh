@@ -3,10 +3,9 @@
 #SBATCH --constraint=dgx
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=32GB
-#SBATCH --gpus=1
-#SBATCH --time=0-12:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2GB
+#SBATCH --time=0-1:00:00
 #SBATCH --partition=short
 #SBATCH --export=ALL
 #SBATCH --account=mandziuk-lab
@@ -20,8 +19,7 @@ echo "Enroot version: $(enroot version)"
 enroot start \
   --rw \
   -e CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES}" \
-  -m /home2/faculty/mmalkinski/projects/eden-cluster-demo/demo:/app/demo \
-  -m /home2/faculty/mmalkinski/projects/eden-cluster-demo/models:/app/models \
+  -m /home2/faculty/mmalkinski/projects/enroot-cluster-demo/demo:/app/demo \
   -m /etc/slurm:/etc/slurm \
   mikomel-demo-latest \
   python "${1}" "${@:2}"
