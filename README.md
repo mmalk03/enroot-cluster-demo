@@ -47,3 +47,8 @@ Output logs of the job can be viewed with:
 ```bash
 tail -f slurm-<JOB_ID>.out
 ```
+
+Alternatively, plain Python can be used to run the scripts without enroot:
+```bash
+sbatch scripts/remote/run.sh demo/main.py -n 5
+```
